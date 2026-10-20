@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "vinellu": {
+      "type": "http",
+      "url": "https://vinellu.com/mcp"
+    }
+  }
+}

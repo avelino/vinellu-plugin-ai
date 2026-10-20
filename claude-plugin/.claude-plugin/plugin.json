@@ -1,0 +1,25 @@
+{
+  "name": "vinellu",
+  "displayName": "Vinellu",
+  "version": "1.0.1",
+  "description": "Acervo de 174 mil rótulos com ficha completa, harmonização com o prato, onde comprar, e a adega, as reviews e as recomendações de quem liga a conta do Vinellu.",
+  "author": {
+    "name": "Vinellu",
+    "url": "https://vinellu.com"
+  },
+  "homepage": "https://vinellu.com",
+  "repository": "https://github.com/avelino/vinellu-plugin-ai",
+  "license": "Apache-2.0",
+  "keywords": [
+    "vinho",
+    "adega",
+    "harmonizacao",
+    "reviews",
+    "wine"
+  ],
+  "icon": "./assets/icon.png",
+  "documentationUrl": "https://vinellu.com/mcp",
+  "supportUrl": "https://vinellu.com/suporte",
+  "privacyPolicyUrl": "https://vinellu.com/privacidade",
+  "termsOfServiceUrl": "https://vinellu.com/termos"
+}

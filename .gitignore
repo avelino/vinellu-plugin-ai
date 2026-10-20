@@ -1,0 +1,9 @@
+# OS junk. Plugin validation rejects packages that contain any of these.
+.DS_Store
+Thumbs.db
+desktop.ini
+__MACOSX/
+
+# Packaged uploads are build output, never versioned.
+dist/
+*.zip

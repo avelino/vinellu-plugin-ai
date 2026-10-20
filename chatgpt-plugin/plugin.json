@@ -1,0 +1,55 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "app-6ab13ddd61f88191ba7fb6c92a930f39",
+  "version": "1.0.14",
+  "description": "Acervo de 174 mil rótulos, a adega de quem conecta a conta, as reviews da comunidade e as recomendações do Vinellu, dentro do ChatGPT.",
+  "author": {
+    "name": "Vinellu",
+    "url": "https://vinellu.com"
+  },
+  "homepage": "https://vinellu.com",
+  "keywords": [
+    "vinho",
+    "adega",
+    "harmonizacao",
+    "reviews",
+    "wine"
+  ],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/conectar-o-vinellu/SKILL.md",
+      "interface": {
+        "displayName": "Vinellu",
+        "shortDescription": "Encontre vinhos e sua adega",
+        "longDescription": "O Vinellu é a rede social do vinho. Este app dá ao ChatGPT acesso ao acervo de 174 mil rótulos, com ficha técnica completa (produtor, país, região, denominação, uva, tipo, corpo, acidez, tanino, doçura e harmonização) e as avaliações da comunidade.\n\nSem conectar conta, você já pode buscar um rótulo por nome, produtor, uva ou região, pedir harmonização para um prato e ver onde comprar.\n\nConectando sua conta Vinellu, o ChatGPT passa a ler e escrever os seus dados. Adega, reviews, lista de quero tomar, curtidas, perfil de gosto, recomendações, check-in do que você está bebendo e pedidos de amizade. Toda escrita que altera ou remove alguma coisa passa por duas etapas. O app mostra em português o que vai fazer e só executa depois que você concorda.\n\nPrecisa de conta no Vinellu, criada no aplicativo para iOS e Android. O login acontece no site do Vinellu com código de uso único, e sua senha nunca passa pelo ChatGPT. Você desconecta quando quiser em vinellu.com/mcp/conectados.\n\nConteúdo em português. O catálogo cobre rótulos do Brasil, Argentina, Chile, França, Itália, Portugal, Espanha e outros.",
+        "developerName": "Vinellu",
+        "category": "Food",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://vinellu.com",
+        "supportURL": "https://vinellu.com/suporte",
+        "privacyPolicyURL": "https://vinellu.com/privacidade",
+        "termsOfServiceURL": "https://vinellu.com/termos",
+        "defaultPrompt": [
+          "Me acha um Malbec argentino até 150 reais.",
+          "Que uva é a base do Chianti, e que rótulo vale provar?",
+          "Quem vende esse rótulo e entrega em Minas?"
+        ],
+        "brandColor": "#5b1e31",
+        "brandColorDark": "#b85a65",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.svg",
+        "logoDark": "./assets/logo-dark.svg",
+        "screenshots": [
+          "./assets/screenshot-1.png",
+          "./assets/screenshot-2.png",
+          "./assets/screenshot-3.png",
+          "./assets/screenshot-4.png",
+          "./assets/screenshot-5.png"
+        ]
+      }
+    }
+  }
+}
