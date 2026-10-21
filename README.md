@@ -18,7 +18,7 @@ itself is documented in English.
 | Folder | Target | Format |
 |---|---|---|
 | [`claude-plugin/`](./claude-plugin) | Claude (claude.ai, Cowork, Claude Code) | Claude plugin: `.claude-plugin/plugin.json`, `.mcp.json`, skills |
-| [`chatgpt-plugin/`](./chatgpt-plugin) | ChatGPT | Agent Plugins 1.0.0: `plugin.json`, `mcp.json`, onboarding skill, assets |
+| [`chatgpt-plugin/`](./chatgpt-plugin) | ChatGPT | Agent Plugins 1.0.0: `plugin.json`, `mcp.json`, assets (no skills) |
 
 Neither package holds code or credentials. They are manifests, Markdown skills
 and images. All behavior lives on the server.
@@ -33,8 +33,9 @@ and images. All behavior lives on the server.
 | `registrar-o-que-bebi` | reviews (private) vs check-ins (public feed post), and warns before posting |
 | `ler-um-rotulo` | the model reads the photo and sends raw text, never the image, and handles the daily quota |
 
-The ChatGPT package ships only `conectar-o-vinellu`. The Claude package ships all
-five.
+The Claude package ships all five. The ChatGPT package ships none, because
+OpenAI review rejected the onboarding skill (see
+[docs/chatgpt-plugin.md](./docs/chatgpt-plugin.md)).
 
 ## Install
 

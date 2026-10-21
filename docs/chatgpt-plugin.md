@@ -30,24 +30,40 @@ the source of the per-tool annotation justifications and the test cases. This
 package read it once (`longDescription` came from its `app_info.description`)
 and does not replace it.
 
-## `name` is the plugin id, not "vinellu"
+## `name` is `vinellu`, a fresh submission
 
-The `name` in `plugin.json` is `app-6ab13ddd61f88191ba7fb6c92a930f39`. It looks
-like garbage and is not. It is the id of the plugin that already exists in the
-portal, the same one in the dashboard URL (`plugin_asdk_app_6ab13…`) and in the
-subject of the rejection email (`[asdk_app_6ab13…]`).
-
-We learned this the expensive way. The package started with
-`"name": "vinellu"`, the obvious kebab-case the docs suggest for a new plugin,
-and the upload died in validation:
+The first submission lived under the portal id
+`app-6ab13ddd61f88191ba7fb6c92a930f39`, and the package used that id as `name`,
+because to **update** an existing plugin `name` is the key that says which one.
+Uploading `"name": "vinellu"` to that entry failed with:
 
 > Plugin name must match the existing plugin. Change `name` from "vinellu" to
 > "app-6ab13ddd61f88191ba7fb6c92a930f39", then upload the ZIP again.
 
-To **update** an existing plugin, `name` is the key that says which plugin is
-being updated. Swapping it for something readable creates a new plugin at best
-and breaks the upload at worst. The name people read is
-`interface.displayName` (`Vinellu`), a different field that is free to change.
+That entry got stuck after its rejection. Every upload, with the old id or not,
+was blocked by "Keep the existing MCP connection. Configure the existing MCP app
+before updating its plugin ZIP", the MCP tab showed "Unavailable" and rescan was
+disabled. OpenAI support acknowledged it as a known issue in the update flow
+with no workaround
+([forum thread](https://community.openai.com/t/rejected-plugin-cannot-be-updated-mcp-unavailable-and-zip-upload-blocked/1405612)).
+
+So the package was resubmitted from scratch as a new plugin: `name` is
+`vinellu` and the version restarted at `1.0.0`. From now on `name` is the
+permanent key of this new entry and must not change. The name people read is
+`interface.displayName` (`Vinellu`), a separate field.
+
+## No skills
+
+The first fresh upload carried the `conectar-o-vinellu` onboarding skill,
+copied from the Claude package. The skill scan rejected it as blocking:
+
+> conectar-o-vinellu: The content or focus of your skill is not suitable for
+> broad discovery and cannot be approved as submitted.
+
+OpenAI does not say what "broad discovery" means for a skill. The skill only
+explained the service and how to sign in, which is what the listing and the
+server instructions already do, and the old `1.0.12` package shipped no skill
+at all. So it was dropped in `1.0.2`. The server alone delivers the 41 tools.
 
 ## OAuth endpoints: discovered, not declared
 
@@ -135,16 +151,21 @@ Outside the package, for the submission to close:
 - **Verified identity** for the organization. Without it the package uploads
   but cannot be submitted.
 
-## Known mismatch: `category`
+## `category` is `Entertainment`
 
-The docs **do not publish** the category list. They say "category title
-required, from the dashboard" and give only `Productivity` and `Developer Tools`
-as examples. The old schema enumerated them in upper case
-(`…, FOOD, LIFESTYLE, PRODUCTIVITY, …`), and the two examples in the new docs
-are the same list in Title Case (`PRODUCTIVITY` → `Productivity`,
-`DEVELOPER_TOOLS` → `Developer Tools`). Hence `FOOD` → **`Food`**. If the
-dashboard offers a different label for the same category, use the dashboard's.
-It is the source, the derivation is inference.
+The category list is closed. It is published under `plugin_category_unknown` in
+OpenAI's [submission errors](https://developers.openai.com/plugins/deploy/submission-errors)
+reference: `Productivity`, `Creativity`, `Developer Tools`,
+`Business & Operations`, `Data & Analytics`, `Communication`,
+`Education & Research`, `Security`, `Finance`, `Healthcare`, `Travel`,
+`Entertainment` or `Other`.
+
+The first version guessed `Food`, derived from the old upper-case schema
+(`FOOD`), and the portal rejected it with "Select a valid category". There is
+no food, drink or lifestyle entry. `Entertainment` is the closest fit for wine
+discovery with a social layer. `Other` is the fallback if review pushes back.
+
+## Schema mismatch
 
 The `agent-plugins.org` schemas do not validate this whole package either. The
 1.0.0 `mcp.schema.json` sets `additionalProperties: false` on the
@@ -155,5 +176,5 @@ Any other is not.
 
 ## Version
 
-The rejected submission was `1.0.12`, and every new ZIP needs a new version.
+The fresh submission starts at `1.0.0`, and every new ZIP needs a new version.
 Changed the package? Bump `version` in `plugin.json` in the same PR.

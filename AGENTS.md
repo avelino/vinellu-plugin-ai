@@ -25,7 +25,7 @@ with it.
   descriptions, `defaultPrompt`, `claude-plugin/README.md` (it is the listing
   page) and every `SKILL.md`. Vinellu is launching in Brazil.
 - Skill folder names stay in Portuguese. They are part of the skill identity
-  (`vinellu:cuidar-da-adega`) and the ChatGPT `onboardingSkill` path.
+  (`vinellu:cuidar-da-adega`).
 - User-facing copy has no emoji and no protocol jargon (MCP, OAuth, scope,
   token, endpoint, connector). The reader drinks wine and has never heard of
   MCP. Tool names are fine inside skills, because those lines are instructions
@@ -58,11 +58,14 @@ with it.
 
 ## ChatGPT package (`chatgpt-plugin/`)
 
-- `name` is `app-6ab13ddd61f88191ba7fb6c92a930f39` and must not change. It is
-  the id of the plugin that already exists in the OpenAI portal. Replacing it
-  with something readable already broke an upload once.
+- `name` is `vinellu` and must not change. It is the key the OpenAI portal uses
+  to match an upload to its plugin entry. The old entry
+  (`app-6ab13ddd61f88191ba7fb6c92a930f39`) is abandoned, see
+  [docs/chatgpt-plugin.md](./docs/chatgpt-plugin.md).
 - Every path inside the manifests starts with `./` and stays inside the folder.
 - The ZIP is build output and is git-ignored.
+- No skills. OpenAI review rejected `conectar-o-vinellu` as "not suitable for
+  broad discovery". Adding a skill back needs a reason that answers that.
 
 ## Values copied from elsewhere
 
@@ -75,7 +78,7 @@ changes, update the copy in the same PR.
 | server `url` in both packages | `netlify.toml` + `netlify/edge-functions/mcp.ts` |
 | `chatgpt-plugin/mcp.json` → `baseScopes` | `SCOPE_PISO` in `mcp-oauth.ts` |
 | `brandColor` / `brandColorDark` | light and dark `--primary-500` of `PAGINA_CSS` in `mcp-oauth.ts` |
-| permission list in `conectar-o-vinellu` (both packages) | `PERMISSIONS` in `src/pages/McpPage.tsx` |
+| permission list in `claude-plugin/skills/conectar-o-vinellu` | `PERMISSIONS` in `src/pages/McpPage.tsx` |
 | `defaultPrompt` and README example questions | `QUESTIONS` in `src/pages/McpPage.tsx` |
 | tool names cited in skills | the `TOOLS` registry in `netlify/edge-functions/mcp.ts` |
 | `longDescription` | `app_info.description` of `chatgpt-app-submission.json` |
@@ -85,7 +88,7 @@ New tool on the server does not mean new skill. Ask whether the model would get
 the sequence wrong without instructions. If yes, the tool goes into the skill
 that covers its subject. A **removed** tool must leave every skill that cites
 it. A new permission scope changes the permission list, which appears in three
-places that move together: both `conectar-o-vinellu` skills and `McpPage.tsx`.
+places that move together: the `conectar-o-vinellu` skill and `McpPage.tsx`.
 
 ## Verify before calling it done
 
