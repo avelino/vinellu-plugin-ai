@@ -1,0 +1,16 @@
+{
+  "name": "vinellu",
+  "owner": {
+    "name": "Vinellu"
+  },
+  "metadata": {
+    "description": "Plugins oficiais do Vinellu, a rede social do vinho."
+  },
+  "plugins": [
+    {
+      "name": "vinellu",
+      "source": "cursor-plugin",
+      "description": "Acervo de 174 mil rótulos com ficha completa, harmonização com o prato, onde comprar, e a adega, as reviews e as recomendações de quem liga a conta do Vinellu."
+    }
+  ]
+}

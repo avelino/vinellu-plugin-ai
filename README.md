@@ -19,6 +19,7 @@ itself is documented in English.
 |---|---|---|
 | [`claude-plugin/`](./claude-plugin) | Claude (claude.ai, Cowork, Claude Code) | Claude plugin: `.claude-plugin/plugin.json`, `.mcp.json`, skills |
 | [`chatgpt-plugin/`](./chatgpt-plugin) | ChatGPT | Agent Plugins 1.0.0: `plugin.json`, `mcp.json`, assets (no skills) |
+| [`cursor-plugin/`](./cursor-plugin) | Cursor | Cursor Plugin: `.cursor-plugin/plugin.json`, `mcp.json`, skills |
 
 Neither package holds code or credentials. They are manifests, Markdown skills
 and images. All behavior lives on the server.
@@ -33,7 +34,7 @@ and images. All behavior lives on the server.
 | `registrar-o-que-bebi` | reviews (private) vs check-ins (public feed post), and warns before posting |
 | `ler-um-rotulo` | the model reads the photo and sends raw text, never the image, and handles the daily quota |
 
-The Claude package ships all five. The ChatGPT package ships none, because
+The Claude and Cursor packages ship all five. The ChatGPT package ships none, because
 OpenAI review rejected the onboarding skill (see
 [docs/chatgpt-plugin.md](./docs/chatgpt-plugin.md)).
 
@@ -51,6 +52,13 @@ Or from a local clone, for development:
 claude --plugin-dir ./claude-plugin
 ```
 
+**Cursor**: from the Cursor marketplace once the listing is live. For
+development, link the folder into Cursor's local plugins and reload the window:
+
+```bash
+ln -s "$PWD/cursor-plugin" ~/.cursor/plugins/local/vinellu
+```
+
 **claude.ai and ChatGPT**: install from each platform's plugin directory once
 the listing is live. Account sign-in happens on vinellu.com with a one-time
 code approved in the Vinellu mobile app. Passwords never reach the assistant.
@@ -60,6 +68,7 @@ code approved in the Vinellu mobile app. Passwords never reach the assistant.
 - [AGENTS.md](./AGENTS.md): rules for anyone (human or agent) editing this repo
 - [docs/claude-plugin.md](./docs/claude-plugin.md): why the Claude package looks the way it does
 - [docs/chatgpt-plugin.md](./docs/chatgpt-plugin.md): why the ChatGPT package looks the way it does
+- [docs/cursor-plugin.md](./docs/cursor-plugin.md): why the Cursor package looks the way it does
 
 ## Support and policies
 
